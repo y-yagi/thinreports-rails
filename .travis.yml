@@ -1,12 +1,14 @@
 language: ruby
-script: ruby test/thinreports-rails_test.rb
+before_script:
+  - travis_retry gem install rails --version "$RAILS_VERSION"
+script:
+  - ruby test/thinreports-rails_test.rb
 rvm:
   - 2.0.0
   - 1.9.3
   - 1.8.7
-gemfile:
-  - gemfiles/Gemfile-rails.3.0.x
-  - gemfiles/Gemfile-rails.3.1.x
-  - gemfiles/Gemfile-rails.3.2.x
-  - gemfiles/Gemfile-rails.4.0.x
-
+env:
+  - RAILS_VERSION="~> 3.0.0"
+  - RAILS_VERSION="~> 3.1.0"
+  - RAILS_VERSION="~> 3.2.0"
+  - RAILS_VERSION="~> 4.0.0"
