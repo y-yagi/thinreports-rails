@@ -47,8 +47,7 @@ module ThinreportsRails
   end
 
   class TemplateHandler
-    cattr_accessor :default_format
-    self.default_format = 'application/pdf'
+    class_attribute :default_format, default: :pdf
 
     def self.call(template)
       %{
